@@ -1,0 +1,47 @@
+name: Bug report
+description: Report inaccurate documentation, broken behavior, or a reproducible repository defect.
+title: "[Bug]: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include personal data, credentials, private sources, or live unauthorized targets.
+  - type: input
+    id: location
+    attributes:
+      label: Affected page or file
+      placeholder: categories/Username.md
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed problem
+      description: State the inaccurate claim or reproducible behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: State the correction and link to a primary source when applicable.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, browser, Python version, or not applicable
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Use only synthetic or reserved test data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed personal data, secrets, and sensitive target details.
+          required: true
+

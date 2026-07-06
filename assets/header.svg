@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">OSINT Toolkit</title>
+  <desc id="desc">Minimal dark header with a network mark and repository subtitle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#17243a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="260" rx="18" fill="url(#bg)"/>
+  <g fill="none" stroke="url(#accent)" stroke-width="3">
+    <circle cx="120" cy="130" r="46"/>
+    <circle cx="120" cy="130" r="11" fill="#0b1220"/>
+    <path d="M120 84V46M120 176v38M74 130H36M166 130h38M87 97 60 70M153 163l27 27M153 97l27-27M87 163l-27 27"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="230" y="125" font-size="58" font-weight="700" letter-spacing="1">OSINT Toolkit</text>
+    <text x="233" y="170" font-size="20" fill="#94a3b8">Modern open-source intelligence and digital investigation resources</text>
+  </g>
+</svg>
+

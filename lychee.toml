@@ -1,0 +1,13 @@
+cache = true
+max_cache_age = "1d"
+max_retries = 3
+timeout = 20
+accept = [200, 204, 206, 403, 429]
+exclude_mail = true
+include_fragments = true
+exclude_path = ["LICENSE"]
+exclude = [
+  "^https://example\\.com/",
+  "^https://project\\.example/",
+  "^https://github\\.com/owner/project$"
+]

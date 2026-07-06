@@ -1,0 +1,36 @@
+name: Documentation quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Rebuild generated documentation
+        run: |
+          python scripts/build_docs.py
+          git diff --exit-code
+
+      - name: Check table of contents
+        run: python scripts/update_toc.py --check
+
+      - name: Validate repository invariants
+        run: python scripts/validate_repo.py
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v23
+

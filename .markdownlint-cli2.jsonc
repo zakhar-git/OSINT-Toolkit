@@ -1,0 +1,15 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": false,
+    "MD033": {
+      "allowed_elements": ["a", "details", "div", "img", "strong", "summary"]
+    },
+    "MD036": false,
+    "MD041": false,
+    "MD046": { "style": "fenced" }
+  },
+  "globs": ["**/*.md", "#node_modules"],
+  "ignores": ["LICENSE"]
+}

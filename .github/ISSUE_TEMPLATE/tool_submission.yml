@@ -1,0 +1,91 @@
+name: Tool submission
+description: Propose a real OSINT or investigation project for structured review.
+title: "[Tool]: "
+labels: [tool-submission, triage]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Official name
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Official repository
+      placeholder: https://github.com/owner/project
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Official website or documentation
+      placeholder: https://project.example/docs
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Primary category
+      options:
+        - Username
+        - Email
+        - Phone
+        - Telegram
+        - Discord
+        - Steam
+        - Gaming
+        - Social Media
+        - Images
+        - Documents
+        - Domains
+        - IP
+        - GEOINT
+        - SOCMINT
+        - HUMINT
+        - OPSEC
+        - AI
+        - Infrastructure
+        - Misc
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License and source
+      placeholder: MIT — link to upstream LICENSE
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Investigative value
+      description: Describe the operation, source types, and why existing entries do not cover it.
+    validations:
+      required: true
+  - type: textarea
+    id: install
+    attributes:
+      label: Verified installation and safe example
+      description: Include version, test date, and synthetic input only.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations and risks
+      description: Include false positives, maintenance, access, legal, privacy, and operational limits.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: The project and links are real and were verified against official sources.
+          required: true
+        - label: I disclosed my relationship with the project, if any, in the value section.
+          required: true
+        - label: The example does not target a real person or unauthorized system.
+          required: true
+
