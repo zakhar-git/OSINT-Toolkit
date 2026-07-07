@@ -5,7 +5,7 @@
 > [!NOTE]
 > This guide covers lawful collection from public sources. Confirm authorization, platform terms, and local law before collecting or retaining data.
 
-Structured research into public social interactions and identities.
+Social media capture, platform datasets, and public interaction analysis.
 
 ## Table of contents
 
@@ -13,8 +13,8 @@ Structured research into public social interactions and identities.
 - [Scope](#scope)
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
-  - [Social Analyzer](#social-analyzer)
-  - [snscrape](#snscrape)
+  - [4CAT](#4cat)
+  - [Zeeschuimer](#zeeschuimer)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
 <!-- toc:end -->
@@ -36,87 +36,89 @@ Use this category to generate and test leads, not to declare identity or attribu
 
 The entries below are curated starting points, not endorsements. Verify current upstream documentation and release signatures before installation.
 
-<a id="social-analyzer"></a>
+<a id="4cat"></a>
 <details>
-<summary><strong>Social Analyzer</strong></summary>
+<summary><strong>4CAT</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | Social Analyzer |
-| **Description** | Correlates a username or name across supported social and public-web sources with multiple analysis modes. |
+| **Name** | 4CAT |
+| **Description** | Research platform for capturing and analyzing social-media datasets through modular data-source and analysis processors. |
 | **Category** | SOCMINT |
-| **Platform** | Linux, macOS, Windows; Python; Node.js; Docker |
-| **Repository** | [https://github.com/qeeqbox/social-analyzer](https://github.com/qeeqbox/social-analyzer) |
-| **Official website** | [https://github.com/qeeqbox/social-analyzer](https://github.com/qeeqbox/social-analyzer) |
-| **License** | MIT |
-| **Status** | Community |
+| **Platform** | Linux server; Docker; Python |
+| **Repository** | [https://github.com/digitalmethodsinitiative/4cat](https://github.com/digitalmethodsinitiative/4cat) |
+| **Official website** | [https://4cat.nl/](https://4cat.nl/) |
+| **License** | MPL-2.0 |
+| **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-python -m pip install social-analyzer
+git clone https://github.com/digitalmethodsinitiative/4cat.git
+cd 4cat
+./helper-scripts/docker-dev/build.sh
 ```
 
 **Quick example**
 
 ```text
-social-analyzer --username analyst_handle --metadata --top 100
+# Create a bounded dataset in 4CAT and export analysis artifacts with source metadata.
 ```
 
 **Supported sources**
 
-Public profile endpoints and search results across supported websites.
+Platform datasets supported by installed 4CAT modules and user-supplied datasets.
 
 **Pros**
 
-Broad query modes; JSON output; useful for initial lead generation.
+Designed for social-media research; modular analysis pipeline; 2026 release activity observed.
 
 **Limitations**
 
-Coverage breadth increases false positives; automated requests can be blocked; all identity links require corroboration.
+Source support varies by platform policy and module health; server operation requires data-governance controls; outputs need sampling and bias notes.
 
 </details>
 
-<a id="snscrape"></a>
+<a id="zeeschuimer"></a>
 <details>
-<summary><strong>snscrape</strong></summary>
+<summary><strong>Zeeschuimer</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | snscrape |
-| **Description** | Collectors for public social-network content that produce structured items for downstream analysis. |
+| **Name** | Zeeschuimer |
+| **Description** | Browser extension for capturing social-media data observed during ordinary browsing and preparing datasets for 4CAT-style analysis. |
 | **Category** | SOCMINT |
-| **Platform** | Linux, macOS, Windows; Python |
-| **Repository** | [https://github.com/JustAnotherArchivist/snscrape](https://github.com/JustAnotherArchivist/snscrape) |
-| **Official website** | [https://github.com/JustAnotherArchivist/snscrape](https://github.com/JustAnotherArchivist/snscrape) |
-| **License** | GPL-3.0 |
-| **Status** | Community |
+| **Platform** | Chromium- and Firefox-based browsers |
+| **Repository** | [https://github.com/digitalmethodsinitiative/zeeschuimer](https://github.com/digitalmethodsinitiative/zeeschuimer) |
+| **Official website** | [https://github.com/digitalmethodsinitiative/zeeschuimer](https://github.com/digitalmethodsinitiative/zeeschuimer) |
+| **License** | MPL-2.0 |
+| **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-pipx install snscrape
+# Install from the official browser-store release or build from the repository.
 ```
 
 **Quick example**
 
 ```text
-snscrape --jsonl reddit-search 'example query' > results.jsonl
+# Start a new collection, browse the scoped public view, then export or upload the captured dataset.
 ```
 
 **Supported sources**
 
-Public content from the collectors currently supported by the installed version.
+Public social-media content rendered in the browser on supported platforms.
 
 **Pros**
 
-Streaming JSON Lines; composable CLI; no private-data claim.
+Captures what the analyst actually observed; integrates with research datasets; 2026 release activity observed.
 
 **Limitations**
 
-Individual collectors frequently break after platform changes; verify current upstream support; collection may be restricted by terms or law.
+Scrolling depth shapes the dataset; platform UI changes can break capture; collection must respect platform terms and subject-safety constraints.
 
 </details>
 

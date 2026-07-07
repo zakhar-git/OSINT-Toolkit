@@ -5,6 +5,8 @@ Describe the focused change and the research or maintenance problem it solves.
 ## Verification
 
 - Official sources checked:
+- Maintenance evidence checked:
+- Professional usage signal checked:
 - Installation or example tested:
 - Verification date:
 - Remaining `TODO` items:
@@ -17,6 +19,8 @@ Explain whether the change adds active traffic, authentication, personal-data pr
 
 - [ ] I edited source data rather than generated category or workflow pages directly.
 - [ ] All projects, repositories, websites, and licenses were verified from primary sources.
+- [ ] Recent commits, releases, issue activity, service updates, or maintainer statements were checked.
+- [ ] The tool is not archived, deprecated, abandoned, duplicated, or included only for popularity.
 - [ ] Examples use synthetic or standards-reserved values.
 - [ ] Limitations describe specific failure modes and access conditions.
 - [ ] I ran `python scripts/build_docs.py` and committed generated changes.

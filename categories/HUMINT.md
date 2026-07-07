@@ -5,7 +5,7 @@
 > [!NOTE]
 > This guide covers lawful collection from public sources. Confirm authorization, platform terms, and local law before collecting or retaining data.
 
-Ethical interview support, research notes, and source corroboration.
+Source management, interview notes, citations, and corroboration records.
 
 ## Table of contents
 
@@ -13,7 +13,7 @@ Ethical interview support, research notes, and source corroboration.
 - [Scope](#scope)
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
-  - [SpiderFoot](#spiderfoot)
+  - [Zotero](#zotero)
   - [Joplin](#joplin)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
@@ -36,45 +36,45 @@ Use this category to generate and test leads, not to declare identity or attribu
 
 The entries below are curated starting points, not endorsements. Verify current upstream documentation and release signatures before installation.
 
-<a id="spiderfoot"></a>
+<a id="zotero"></a>
 <details>
-<summary><strong>SpiderFoot</strong></summary>
+<summary><strong>Zotero</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | SpiderFoot |
-| **Description** | Automates open-source collection and entity correlation to prepare and corroborate lawful research leads. |
+| **Name** | Zotero |
+| **Description** | Reference manager for preserving citations, source snapshots, annotations, and bibliographies for investigative records. |
 | **Category** | HUMINT |
-| **Platform** | Linux, macOS, Windows; Python; Docker |
-| **Repository** | [https://github.com/smicallef/spiderfoot](https://github.com/smicallef/spiderfoot) |
-| **Official website** | [https://www.spiderfoot.net/](https://www.spiderfoot.net/) |
-| **License** | MIT |
+| **Platform** | Linux, macOS, Windows; browser connectors; web library |
+| **Repository** | [https://github.com/zotero/zotero](https://github.com/zotero/zotero) |
+| **Official website** | [https://www.zotero.org/](https://www.zotero.org/) |
+| **License** | AGPL-3.0 |
 | **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-docker pull spiderfoot/spiderfoot
+# Install the signed desktop app and browser connector from the official website.
 ```
 
 **Quick example**
 
 ```text
-docker run -p 5001:5001 spiderfoot/spiderfoot
+# Save first-party source pages, attach PDFs, and export a case bibliography.
 ```
 
 **Supported sources**
 
-Configured public APIs, DNS, web pages, threat-intelligence feeds, and search sources.
+Analyst-supplied web pages, documents, metadata records, annotations, and citation exports.
 
 **Pros**
 
-Entity graph; modular sources; useful for pre-interview fact checking.
+Research-focused citation model; browser capture; active repository activity observed in 2026.
 
 **Limitations**
 
-Automation can amplify incorrect associations; API terms differ; it is not a substitute for consent, source evaluation, or human judgment.
+It preserves references, not truth; cloud sync and group libraries require access controls; private-source notes need separate consent and retention rules.
 
 </details>
 

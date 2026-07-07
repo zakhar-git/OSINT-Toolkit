@@ -16,7 +16,7 @@ VERIFIED = "2026-07-07"
 
 CATEGORIES = [
     ("Username", "Username discovery and identity correlation across public services."),
-    ("Email", "Email account discovery, reputation checks, and breach-aware triage."),
+    ("Email", "Email account context, breach exposure, and account-linked public artifacts."),
     ("Phone", "Number parsing, carrier context, and public footprint discovery."),
     ("Telegram", "Telegram client research and public-channel collection."),
     ("Discord", "Authorized export and preservation of accessible Discord content."),
@@ -26,14 +26,14 @@ CATEGORIES = [
     ("Images", "Metadata inspection, hashing, and visual-evidence triage."),
     ("Documents", "Document metadata, embedded-object, and sanitization analysis."),
     ("Domains", "DNS, subdomain, certificate, and external-asset discovery."),
-    ("IP", "Network attribution context and authorized service discovery."),
+    ("IP", "IP geolocation, ASN context, routing, and authorized service discovery."),
     ("GEOINT", "Geospatial analysis, map data, and location corroboration."),
-    ("SOCMINT", "Structured research into public social interactions and identities."),
-    ("HUMINT", "Ethical interview support, research notes, and source corroboration."),
+    ("SOCMINT", "Social media capture, platform datasets, and public interaction analysis."),
+    ("HUMINT", "Source management, interview notes, citations, and corroboration records."),
     ("OPSEC", "Researcher compartmentation, transport privacy, and data protection."),
     ("AI", "Local language, transcription, and extraction assistance for analysts."),
     ("Infrastructure", "Authorized exposure mapping and web-service reconnaissance."),
-    ("Misc", "General-purpose OSINT frameworks and extensible research consoles."),
+    ("Misc", "Intelligence knowledge platforms and structured relationship management."),
 ]
 
 TOOLS = {
@@ -53,16 +53,16 @@ TOOLS = {
     ],
     "Email": [
         {
-            "name": "Holehe", "description": "Tests whether an email address is associated with supported services through public account-recovery behavior.",
-            "platform": "Linux, macOS, Windows; Python", "repo": "https://github.com/megadose/holehe", "site": "https://github.com/megadose/holehe", "license": "GPL-3.0", "status": "Community",
-            "install": "pipx install holehe", "example": "holehe subject@example.com --only-used", "sources": "Public registration and account-recovery responses from supported services.",
-            "pros": "Focused account-discovery signal; simple CLI; service modules are inspectable.", "limits": "May trigger rate limits or notifications; service behavior changes frequently; a hit is not proof of control.",
+            "name": "GHunt", "description": "Collects public Google account artifacts and Google-service signals for a known identifier when the analyst has a lawful reason to test that pivot.",
+            "platform": "Linux, macOS, Windows; Python; Docker", "repo": "https://github.com/mxrch/GHunt", "site": "https://github.com/mxrch/GHunt", "license": "AGPL-3.0", "status": "Maintained",
+            "install": "pipx install ghunt", "example": "ghunt email subject@example.com", "sources": "Public Google account surfaces, Google Maps contribution signals, and metadata visible through supported Google services.",
+            "pros": "Focused Google ecosystem pivoting; structured modules; active repository activity observed in 2026.", "limits": "Requires authenticated setup; Google changes can break modules; a visible Google artifact is not proof that the subject still controls the account.",
         },
         {
-            "name": "h8mail", "description": "Correlates email addresses with locally supplied or authorized breach and intelligence sources.",
-            "platform": "Linux, macOS, Windows; Python", "repo": "https://github.com/khast3x/h8mail", "site": "https://github.com/khast3x/h8mail", "license": "MIT", "status": "Community",
-            "install": "pipx install h8mail", "example": "h8mail -t subject@example.com -q case-001.csv", "sources": "Local breach files and configured third-party APIs for which the analyst has lawful access.",
-            "pros": "Supports local datasets; CSV output; useful for controlled enrichment pipelines.", "limits": "Data provenance and legality vary; stale breach data can mislead; API sources require separate credentials and terms review.",
+            "name": "Have I Been Pwned API", "description": "Official breach-exposure API for checking whether an email address or verified domain appears in indexed breach data.",
+            "platform": "REST API; MCP server; any HTTP client", "repo": "Not publicly published by vendor.", "site": "https://haveibeenpwned.com/API/v3", "license": "Proprietary API terms", "status": "Active",
+            "install": "# Obtain an API key from the official HIBP dashboard when authorized.", "example": "HIBP_API_URL=\"[official API base URL]\"\ncurl -H \"hibp-api-key: $HIBP_API_KEY\" -H \"user-agent: osint-toolkit-research\" \"$HIBP_API_URL/breachedaccount/account-exists%40hibp-integration-tests.com\"", "sources": "HIBP breach, paste, stealer-log, domain, and Pwned Passwords endpoints available under the selected plan.",
+            "pros": "Official documented API; supports privacy-preserving hash-range email searches; domain search requires control verification.", "limits": "Direct email queries disclose the address to HIBP; most email/domain endpoints require subscription and strict acceptable-use compliance; breach presence is exposure evidence, not attribution.",
         },
     ],
     "Phone": [
@@ -81,10 +81,10 @@ TOOLS = {
     ],
     "Telegram": [
         {
-            "name": "Telethon", "description": "Python client library for the Telegram API, suitable for authorized, reproducible public-channel collection.",
-            "platform": "Linux, macOS, Windows; Python", "repo": "https://github.com/LonamiWebs/Telethon", "site": "https://docs.telethon.dev/", "license": "MIT", "status": "Maintained",
-            "install": "python -m pip install telethon", "example": "python -m telethon.sync", "sources": "Telegram entities and messages accessible to the authenticated account through the official API.",
-            "pros": "Asynchronous API; documented entity model; supports controlled exports.", "limits": "Requires Telegram API credentials; account access and collection must comply with law and platform terms; private content is out of scope without authorization.",
+            "name": "TDLib", "description": "Telegram's cross-platform client library for building controlled collectors and research clients against Telegram data visible to an authenticated account.",
+            "platform": "Linux, macOS, Windows, Android, iOS; C++; JSON interface for other languages", "repo": "https://github.com/tdlib/td", "site": "https://core.telegram.org/tdlib", "license": "BSL-1.0", "status": "Maintained",
+            "install": "# Build TDLib from the official repository or use the official build instructions generator.", "example": "# Use the td_json interface to collect a bounded public-channel message range.", "sources": "Telegram chats, channels, users, messages, media references, and updates visible to the authenticated account through Telegram APIs.",
+            "pros": "Official Telegram library; documented JSON interface; commit activity observed in 2026.", "limits": "Requires custom engineering and Telegram credentials; authenticated collection must respect law and platform rules; access visibility is account-dependent.",
         },
         {
             "name": "Telegram Phone Number Checker", "description": "Bellingcat utility that checks whether phone numbers are connected to visible Telegram accounts under the operator's contact-discovery settings.",
@@ -199,10 +199,10 @@ TOOLS = {
             "pros": "Mature service detection; XML output; extensive documentation.", "limits": "Active scanning is observable and may be unlawful without permission; detection is probabilistic; use documentation-reserved addresses in examples.",
         },
         {
-            "name": "ZMap", "description": "High-speed internet scanner designed for controlled research with explicit scope and rate governance.",
-            "platform": "Linux, macOS, BSD", "repo": "https://github.com/zmap/zmap", "site": "https://zmap.io/", "license": "Apache-2.0", "status": "Maintained",
-            "install": "# Debian/Ubuntu\nsudo apt install zmap", "example": "zmap --dryrun -p 443 192.0.2.0/24", "sources": "Direct responses to researcher-defined network probes.",
-            "pros": "Reproducible high-volume methodology; denylist support; structured output.", "limits": "Internet-scale use has substantial legal, ethical, and operational risk; never run without authorization, exclusions, rate controls, and abuse handling.",
+            "name": "IPinfo CLI", "description": "Official command-line client for IPinfo's IP, ASN, geolocation, hosting, privacy, and bulk enrichment API data.",
+            "platform": "Linux, macOS, Windows, BSD, Solaris; Go; Docker", "repo": "https://github.com/ipinfo/cli", "site": "https://ipinfo.io/", "license": "Apache-2.0", "status": "Maintained",
+            "install": "go install github.com/ipinfo/cli/ipinfo@latest", "example": "ipinfo 8.8.8.8", "sources": "IPinfo API datasets, analyst-supplied IPs, CIDR ranges, ASN lookups, and local IP lists.",
+            "pros": "Official vendor CLI; supports single and bulk lookup workflows; recent release observed in 2026.", "limits": "Data depth depends on the API plan and token; geolocation is approximate; IP ownership, hosting, and user attribution are separate questions.",
         },
     ],
     "GEOINT": [
@@ -221,24 +221,24 @@ TOOLS = {
     ],
     "SOCMINT": [
         {
-            "name": "Social Analyzer", "description": "Correlates a username or name across supported social and public-web sources with multiple analysis modes.",
-            "platform": "Linux, macOS, Windows; Python; Node.js; Docker", "repo": "https://github.com/qeeqbox/social-analyzer", "site": "https://github.com/qeeqbox/social-analyzer", "license": "MIT", "status": "Community",
-            "install": "python -m pip install social-analyzer", "example": "social-analyzer --username analyst_handle --metadata --top 100", "sources": "Public profile endpoints and search results across supported websites.",
-            "pros": "Broad query modes; JSON output; useful for initial lead generation.", "limits": "Coverage breadth increases false positives; automated requests can be blocked; all identity links require corroboration.",
+            "name": "4CAT", "description": "Research platform for capturing and analyzing social-media datasets through modular data-source and analysis processors.",
+            "platform": "Linux server; Docker; Python", "repo": "https://github.com/digitalmethodsinitiative/4cat", "site": "https://4cat.nl/", "license": "MPL-2.0", "status": "Maintained",
+            "install": "git clone https://github.com/digitalmethodsinitiative/4cat.git\ncd 4cat\n./helper-scripts/docker-dev/build.sh", "example": "# Create a bounded dataset in 4CAT and export analysis artifacts with source metadata.", "sources": "Platform datasets supported by installed 4CAT modules and user-supplied datasets.",
+            "pros": "Designed for social-media research; modular analysis pipeline; 2026 release activity observed.", "limits": "Source support varies by platform policy and module health; server operation requires data-governance controls; outputs need sampling and bias notes.",
         },
         {
-            "name": "snscrape", "description": "Collectors for public social-network content that produce structured items for downstream analysis.",
-            "platform": "Linux, macOS, Windows; Python", "repo": "https://github.com/JustAnotherArchivist/snscrape", "site": "https://github.com/JustAnotherArchivist/snscrape", "license": "GPL-3.0", "status": "Community",
-            "install": "pipx install snscrape", "example": "snscrape --jsonl reddit-search 'example query' > results.jsonl", "sources": "Public content from the collectors currently supported by the installed version.",
-            "pros": "Streaming JSON Lines; composable CLI; no private-data claim.", "limits": "Individual collectors frequently break after platform changes; verify current upstream support; collection may be restricted by terms or law.",
+            "name": "Zeeschuimer", "description": "Browser extension for capturing social-media data observed during ordinary browsing and preparing datasets for 4CAT-style analysis.",
+            "platform": "Chromium- and Firefox-based browsers", "repo": "https://github.com/digitalmethodsinitiative/zeeschuimer", "site": "https://github.com/digitalmethodsinitiative/zeeschuimer", "license": "MPL-2.0", "status": "Maintained",
+            "install": "# Install from the official browser-store release or build from the repository.", "example": "# Start a new collection, browse the scoped public view, then export or upload the captured dataset.", "sources": "Public social-media content rendered in the browser on supported platforms.",
+            "pros": "Captures what the analyst actually observed; integrates with research datasets; 2026 release activity observed.", "limits": "Scrolling depth shapes the dataset; platform UI changes can break capture; collection must respect platform terms and subject-safety constraints.",
         },
     ],
     "HUMINT": [
         {
-            "name": "SpiderFoot", "description": "Automates open-source collection and entity correlation to prepare and corroborate lawful research leads.",
-            "platform": "Linux, macOS, Windows; Python; Docker", "repo": "https://github.com/smicallef/spiderfoot", "site": "https://www.spiderfoot.net/", "license": "MIT", "status": "Maintained",
-            "install": "docker pull spiderfoot/spiderfoot", "example": "docker run -p 5001:5001 spiderfoot/spiderfoot", "sources": "Configured public APIs, DNS, web pages, threat-intelligence feeds, and search sources.",
-            "pros": "Entity graph; modular sources; useful for pre-interview fact checking.", "limits": "Automation can amplify incorrect associations; API terms differ; it is not a substitute for consent, source evaluation, or human judgment.",
+            "name": "Zotero", "description": "Reference manager for preserving citations, source snapshots, annotations, and bibliographies for investigative records.",
+            "platform": "Linux, macOS, Windows; browser connectors; web library", "repo": "https://github.com/zotero/zotero", "site": "https://www.zotero.org/", "license": "AGPL-3.0", "status": "Maintained",
+            "install": "# Install the signed desktop app and browser connector from the official website.", "example": "# Save first-party source pages, attach PDFs, and export a case bibliography.", "sources": "Analyst-supplied web pages, documents, metadata records, annotations, and citation exports.",
+            "pros": "Research-focused citation model; browser capture; active repository activity observed in 2026.", "limits": "It preserves references, not truth; cloud sync and group libraries require access controls; private-source notes need separate consent and retention rules.",
         },
         {
             "name": "Joplin", "description": "End-to-end encrypted note application suitable for structured interview notes and source logs.",
@@ -250,7 +250,7 @@ TOOLS = {
     "OPSEC": [
         {
             "name": "Tor", "description": "An anonymity network and client for separating research traffic from ordinary network identity.",
-            "platform": "Linux, macOS, Windows, Android", "repo": "https://gitlab.torproject.org/tpo/core/tor", "site": "https://www.torproject.org/", "license": "BSD-3-Clause", "status": "Maintained",
+            "platform": "Linux, macOS, Windows, Android", "repo": "https://gitlab.torproject.org/tpo/core/tor", "site": "https://support.torproject.org/", "license": "BSD-3-Clause", "status": "Maintained",
             "install": "# Prefer Tor Browser from the official website and verify its signature.", "example": "# Confirm the connection only through the Tor Project check page.", "sources": "Network transport; Tor does not itself provide OSINT data sources.",
             "pros": "Separates destination traffic from the origin IP; mature threat documentation; open source.", "limits": "Does not provide complete anonymity; browser behavior, logins, downloads, and endpoint compromise can deanonymize a researcher.",
         },
@@ -269,10 +269,10 @@ TOOLS = {
             "pros": "Local processing can reduce disclosure; scriptable API; broad model ecosystem.", "limits": "Models hallucinate and reproduce bias; model licenses vary; outputs require source-grounded human verification.",
         },
         {
-            "name": "Whisper", "description": "OpenAI speech-recognition model and reference code for local transcription and language identification.",
-            "platform": "Linux, macOS, Windows; Python; GPU optional", "repo": "https://github.com/openai/whisper", "site": "https://github.com/openai/whisper", "license": "MIT", "status": "Maintained",
-            "install": "python -m pip install -U openai-whisper", "example": "whisper interview.wav --model turbo --output_format json", "sources": "Local audio and video converted through FFmpeg-supported formats.",
-            "pros": "Multilingual transcription; timestamped output; can run locally.", "limits": "Names, numbers, and low-quality audio are error-prone; consent and recording law matter; transcriptions must be checked against audio.",
+            "name": "whisper.cpp", "description": "Local C/C++ implementation of Whisper speech recognition for offline transcription and language identification of collected audio.",
+            "platform": "Linux, macOS, Windows, iOS, Android; CPU and GPU backends", "repo": "https://github.com/ggml-org/whisper.cpp", "site": "https://github.com/ggml-org/whisper.cpp", "license": "MIT", "status": "Maintained",
+            "install": "git clone https://github.com/ggml-org/whisper.cpp.git\ncd whisper.cpp\ncmake -B build\ncmake --build build --config Release", "example": "./build/bin/whisper-cli -m models/ggml-base.en.bin -f interview.wav -oj", "sources": "Local audio and video converted through FFmpeg-supported formats.",
+            "pros": "Runs locally without sending audio to a service; timestamped JSON output; 2026 release activity observed.", "limits": "Names, numbers, accents, and low-quality audio remain error-prone; model files have separate provenance; transcripts must be verified against the recording.",
         },
     ],
     "Infrastructure": [
@@ -291,16 +291,16 @@ TOOLS = {
     ],
     "Misc": [
         {
-            "name": "Recon-ng", "description": "Modular reconnaissance framework with workspaces, structured records, and exportable results.",
-            "platform": "Linux, macOS, Windows; Python", "repo": "https://github.com/lanmaster53/recon-ng", "site": "https://github.com/lanmaster53/recon-ng/wiki", "license": "GPL-3.0", "status": "Community",
-            "install": "git clone https://github.com/lanmaster53/recon-ng.git\ncd recon-ng\npython -m pip install -r REQUIREMENTS", "example": "./recon-ng -w case-001", "sources": "Public and credentialed APIs selected through separately installed modules.",
-            "pros": "Case workspaces; modular design; repeatable exports.", "limits": "Modules vary in maintenance and legal terms; API keys are sensitive; framework output needs source-level validation.",
+            "name": "OpenCTI", "description": "Open-source platform for structuring, storing, visualizing, and sharing cyber threat intelligence knowledge and observables.",
+            "platform": "Docker; Linux server; web application; GraphQL API", "repo": "https://github.com/OpenCTI-Platform/opencti", "site": "https://opencti.io/", "license": "Apache-2.0 community edition", "status": "Maintained",
+            "install": "# Deploy from the official Docker Compose instructions for the selected version.", "example": "# Import a STIX bundle and map relationships between observables, reports, intrusion sets, and incidents.", "sources": "Analyst-created intelligence objects, STIX data, connectors, reports, observables, and enrichment sources.",
+            "pros": "Structured relationship model; visual analysis; frequent 2026 releases observed.", "limits": "Requires operational security, access control, and data-quality governance; connectors can import unverified data; not a collection shortcut.",
         },
         {
-            "name": "OSINT Framework", "description": "A navigable taxonomy of OSINT resources organized by starting data type and investigative objective.",
-            "platform": "Web", "repo": "https://github.com/lockfale/OSINT-Framework", "site": "https://osintframework.com/", "license": "MIT", "status": "Community",
-            "install": "# No installation is required for the hosted website.", "example": "https://osintframework.com/", "sources": "Curated links to third-party services and research resources.",
-            "pros": "Fast discovery by pivot type; broad coverage; source tree is public.", "limits": "A catalog is not validation; third-party links and business models change; evaluate every resource before submitting data.",
+            "name": "MISP", "description": "Open-source threat-intelligence sharing platform for storing, correlating, and distributing structured indicators, events, and reports.",
+            "platform": "Linux server; Docker; web application; REST API", "repo": "https://github.com/MISP/MISP", "site": "https://www.misp-project.org/", "license": "AGPL-3.0", "status": "Maintained",
+            "install": "# Deploy from the official MISP installation or Docker documentation.", "example": "# Create an event, add attributes and objects, then export selected indicators under the appropriate sharing policy.", "sources": "Analyst-created events, indicators, objects, sightings, feeds, reports, and synchronized MISP communities.",
+            "pros": "Mature correlation engine; granular sharing controls; 2026 release activity observed.", "limits": "Indicator correlation is not attribution; feeds vary in quality and legal terms; sharing policies must match source restrictions.",
         },
     ],
 }

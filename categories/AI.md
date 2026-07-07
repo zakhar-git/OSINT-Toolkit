@@ -14,7 +14,7 @@ Local language, transcription, and extraction assistance for analysts.
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
   - [Ollama](#ollama)
-  - [Whisper](#whisper)
+  - [whisper.cpp](#whisper-cpp)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
 <!-- toc:end -->
@@ -79,18 +79,18 @@ Models hallucinate and reproduce bias; model licenses vary; outputs require sour
 
 </details>
 
-<a id="whisper"></a>
+<a id="whisper-cpp"></a>
 <details>
-<summary><strong>Whisper</strong></summary>
+<summary><strong>whisper.cpp</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | Whisper |
-| **Description** | OpenAI speech-recognition model and reference code for local transcription and language identification. |
+| **Name** | whisper.cpp |
+| **Description** | Local C/C++ implementation of Whisper speech recognition for offline transcription and language identification of collected audio. |
 | **Category** | AI |
-| **Platform** | Linux, macOS, Windows; Python; GPU optional |
-| **Repository** | [https://github.com/openai/whisper](https://github.com/openai/whisper) |
-| **Official website** | [https://github.com/openai/whisper](https://github.com/openai/whisper) |
+| **Platform** | Linux, macOS, Windows, iOS, Android; CPU and GPU backends |
+| **Repository** | [https://github.com/ggml-org/whisper.cpp](https://github.com/ggml-org/whisper.cpp) |
+| **Official website** | [https://github.com/ggml-org/whisper.cpp](https://github.com/ggml-org/whisper.cpp) |
 | **License** | MIT |
 | **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
@@ -98,13 +98,16 @@ Models hallucinate and reproduce bias; model licenses vary; outputs require sour
 **Installation**
 
 ```text
-python -m pip install -U openai-whisper
+git clone https://github.com/ggml-org/whisper.cpp.git
+cd whisper.cpp
+cmake -B build
+cmake --build build --config Release
 ```
 
 **Quick example**
 
 ```text
-whisper interview.wav --model turbo --output_format json
+./build/bin/whisper-cli -m models/ggml-base.en.bin -f interview.wav -oj
 ```
 
 **Supported sources**
@@ -113,11 +116,11 @@ Local audio and video converted through FFmpeg-supported formats.
 
 **Pros**
 
-Multilingual transcription; timestamped output; can run locally.
+Runs locally without sending audio to a service; timestamped JSON output; 2026 release activity observed.
 
 **Limitations**
 
-Names, numbers, and low-quality audio are error-prone; consent and recording law matter; transcriptions must be checked against audio.
+Names, numbers, accents, and low-quality audio remain error-prone; model files have separate provenance; transcripts must be verified against the recording.
 
 </details>
 

@@ -12,8 +12,9 @@ body:
   - type: input
     id: repository
     attributes:
-      label: Official repository
-      placeholder: https://github.com/owner/project
+      label: Official repository or service source
+      description: Use the official repository when one exists. For proprietary services, link the official API, documentation, or terms page.
+      placeholder: https://github.com/owner/project or https://service.example/docs
     validations:
       required: true
   - type: input
@@ -64,6 +65,25 @@ body:
     validations:
       required: true
   - type: textarea
+    id: maintenance
+    attributes:
+      label: Maintenance evidence
+      description: Include recent commits, releases, package updates, issue activity, maintainer statements, service documentation updates, or other public evidence.
+      placeholder: |
+        - Recent commit or release:
+        - Issue tracker or support signal:
+        - Documentation reviewed:
+        - Tested version or service date:
+    validations:
+      required: true
+  - type: textarea
+    id: community
+    attributes:
+      label: Professional usage signal
+      description: Link public evidence that investigators, researchers, journalists, or security teams use or recommend it. Do not cite generic awesome lists as the only evidence.
+    validations:
+      required: true
+  - type: textarea
     id: install
     attributes:
       label: Verified installation and safe example
@@ -84,8 +104,13 @@ body:
       options:
         - label: The project and links are real and were verified against official sources.
           required: true
+        - label: Recent maintenance or service activity was verified from public sources.
+          required: true
+        - label: The repository is not archived, deprecated, or effectively abandoned.
+          required: true
+        - label: The tool is not being added only because it is popular or appears in another list.
+          required: true
         - label: I disclosed my relationship with the project, if any, in the value section.
           required: true
         - label: The example does not target a real person or unauthorized system.
           required: true
-

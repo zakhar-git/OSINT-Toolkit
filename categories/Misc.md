@@ -5,7 +5,7 @@
 > [!NOTE]
 > This guide covers lawful collection from public sources. Confirm authorization, platform terms, and local law before collecting or retaining data.
 
-General-purpose OSINT frameworks and extensible research consoles.
+Intelligence knowledge platforms and structured relationship management.
 
 ## Table of contents
 
@@ -13,8 +13,8 @@ General-purpose OSINT frameworks and extensible research consoles.
 - [Scope](#scope)
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
-  - [Recon-ng](#recon-ng)
-  - [OSINT Framework](#osint-framework)
+  - [OpenCTI](#opencti)
+  - [MISP](#misp)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
 <!-- toc:end -->
@@ -36,89 +36,87 @@ Use this category to generate and test leads, not to declare identity or attribu
 
 The entries below are curated starting points, not endorsements. Verify current upstream documentation and release signatures before installation.
 
-<a id="recon-ng"></a>
+<a id="opencti"></a>
 <details>
-<summary><strong>Recon-ng</strong></summary>
+<summary><strong>OpenCTI</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | Recon-ng |
-| **Description** | Modular reconnaissance framework with workspaces, structured records, and exportable results. |
+| **Name** | OpenCTI |
+| **Description** | Open-source platform for structuring, storing, visualizing, and sharing cyber threat intelligence knowledge and observables. |
 | **Category** | Misc |
-| **Platform** | Linux, macOS, Windows; Python |
-| **Repository** | [https://github.com/lanmaster53/recon-ng](https://github.com/lanmaster53/recon-ng) |
-| **Official website** | [https://github.com/lanmaster53/recon-ng/wiki](https://github.com/lanmaster53/recon-ng/wiki) |
-| **License** | GPL-3.0 |
-| **Status** | Community |
+| **Platform** | Docker; Linux server; web application; GraphQL API |
+| **Repository** | [https://github.com/OpenCTI-Platform/opencti](https://github.com/OpenCTI-Platform/opencti) |
+| **Official website** | [https://opencti.io/](https://opencti.io/) |
+| **License** | Apache-2.0 community edition |
+| **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-git clone https://github.com/lanmaster53/recon-ng.git
-cd recon-ng
-python -m pip install -r REQUIREMENTS
+# Deploy from the official Docker Compose instructions for the selected version.
 ```
 
 **Quick example**
 
 ```text
-./recon-ng -w case-001
+# Import a STIX bundle and map relationships between observables, reports, intrusion sets, and incidents.
 ```
 
 **Supported sources**
 
-Public and credentialed APIs selected through separately installed modules.
+Analyst-created intelligence objects, STIX data, connectors, reports, observables, and enrichment sources.
 
 **Pros**
 
-Case workspaces; modular design; repeatable exports.
+Structured relationship model; visual analysis; frequent 2026 releases observed.
 
 **Limitations**
 
-Modules vary in maintenance and legal terms; API keys are sensitive; framework output needs source-level validation.
+Requires operational security, access control, and data-quality governance; connectors can import unverified data; not a collection shortcut.
 
 </details>
 
-<a id="osint-framework"></a>
+<a id="misp"></a>
 <details>
-<summary><strong>OSINT Framework</strong></summary>
+<summary><strong>MISP</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | OSINT Framework |
-| **Description** | A navigable taxonomy of OSINT resources organized by starting data type and investigative objective. |
+| **Name** | MISP |
+| **Description** | Open-source threat-intelligence sharing platform for storing, correlating, and distributing structured indicators, events, and reports. |
 | **Category** | Misc |
-| **Platform** | Web |
-| **Repository** | [https://github.com/lockfale/OSINT-Framework](https://github.com/lockfale/OSINT-Framework) |
-| **Official website** | [https://osintframework.com/](https://osintframework.com/) |
-| **License** | MIT |
-| **Status** | Community |
+| **Platform** | Linux server; Docker; web application; REST API |
+| **Repository** | [https://github.com/MISP/MISP](https://github.com/MISP/MISP) |
+| **Official website** | [https://www.misp-project.org/](https://www.misp-project.org/) |
+| **License** | AGPL-3.0 |
+| **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-# No installation is required for the hosted website.
+# Deploy from the official MISP installation or Docker documentation.
 ```
 
 **Quick example**
 
 ```text
-https://osintframework.com/
+# Create an event, add attributes and objects, then export selected indicators under the appropriate sharing policy.
 ```
 
 **Supported sources**
 
-Curated links to third-party services and research resources.
+Analyst-created events, indicators, objects, sightings, feeds, reports, and synchronized MISP communities.
 
 **Pros**
 
-Fast discovery by pivot type; broad coverage; source tree is public.
+Mature correlation engine; granular sharing controls; 2026 release activity observed.
 
 **Limitations**
 
-A catalog is not validation; third-party links and business models change; evaluate every resource before submitting data.
+Indicator correlation is not attribution; feeds vary in quality and legal terms; sharing policies must match source restrictions.
 
 </details>
 

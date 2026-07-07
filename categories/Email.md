@@ -5,7 +5,7 @@
 > [!NOTE]
 > This guide covers lawful collection from public sources. Confirm authorization, platform terms, and local law before collecting or retaining data.
 
-Email account discovery, reputation checks, and breach-aware triage.
+Email account context, breach exposure, and account-linked public artifacts.
 
 ## Table of contents
 
@@ -13,8 +13,8 @@ Email account discovery, reputation checks, and breach-aware triage.
 - [Scope](#scope)
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
-  - [Holehe](#holehe)
-  - [h8mail](#h8mail)
+  - [GHunt](#ghunt)
+  - [Have I Been Pwned API](#have-i-been-pwned-api)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
 <!-- toc:end -->
@@ -36,87 +36,88 @@ Use this category to generate and test leads, not to declare identity or attribu
 
 The entries below are curated starting points, not endorsements. Verify current upstream documentation and release signatures before installation.
 
-<a id="holehe"></a>
+<a id="ghunt"></a>
 <details>
-<summary><strong>Holehe</strong></summary>
+<summary><strong>GHunt</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | Holehe |
-| **Description** | Tests whether an email address is associated with supported services through public account-recovery behavior. |
+| **Name** | GHunt |
+| **Description** | Collects public Google account artifacts and Google-service signals for a known identifier when the analyst has a lawful reason to test that pivot. |
 | **Category** | Email |
-| **Platform** | Linux, macOS, Windows; Python |
-| **Repository** | [https://github.com/megadose/holehe](https://github.com/megadose/holehe) |
-| **Official website** | [https://github.com/megadose/holehe](https://github.com/megadose/holehe) |
-| **License** | GPL-3.0 |
-| **Status** | Community |
+| **Platform** | Linux, macOS, Windows; Python; Docker |
+| **Repository** | [https://github.com/mxrch/GHunt](https://github.com/mxrch/GHunt) |
+| **Official website** | [https://github.com/mxrch/GHunt](https://github.com/mxrch/GHunt) |
+| **License** | AGPL-3.0 |
+| **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-pipx install holehe
+pipx install ghunt
 ```
 
 **Quick example**
 
 ```text
-holehe subject@example.com --only-used
+ghunt email subject@example.com
 ```
 
 **Supported sources**
 
-Public registration and account-recovery responses from supported services.
+Public Google account surfaces, Google Maps contribution signals, and metadata visible through supported Google services.
 
 **Pros**
 
-Focused account-discovery signal; simple CLI; service modules are inspectable.
+Focused Google ecosystem pivoting; structured modules; active repository activity observed in 2026.
 
 **Limitations**
 
-May trigger rate limits or notifications; service behavior changes frequently; a hit is not proof of control.
+Requires authenticated setup; Google changes can break modules; a visible Google artifact is not proof that the subject still controls the account.
 
 </details>
 
-<a id="h8mail"></a>
+<a id="have-i-been-pwned-api"></a>
 <details>
-<summary><strong>h8mail</strong></summary>
+<summary><strong>Have I Been Pwned API</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | h8mail |
-| **Description** | Correlates email addresses with locally supplied or authorized breach and intelligence sources. |
+| **Name** | Have I Been Pwned API |
+| **Description** | Official breach-exposure API for checking whether an email address or verified domain appears in indexed breach data. |
 | **Category** | Email |
-| **Platform** | Linux, macOS, Windows; Python |
-| **Repository** | [https://github.com/khast3x/h8mail](https://github.com/khast3x/h8mail) |
-| **Official website** | [https://github.com/khast3x/h8mail](https://github.com/khast3x/h8mail) |
-| **License** | MIT |
-| **Status** | Community |
+| **Platform** | REST API; MCP server; any HTTP client |
+| **Repository** | Not publicly published by vendor. |
+| **Official website** | [https://haveibeenpwned.com/API/v3](https://haveibeenpwned.com/API/v3) |
+| **License** | Proprietary API terms |
+| **Status** | Active |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-pipx install h8mail
+# Obtain an API key from the official HIBP dashboard when authorized.
 ```
 
 **Quick example**
 
 ```text
-h8mail -t subject@example.com -q case-001.csv
+HIBP_API_URL="[official API base URL]"
+curl -H "hibp-api-key: $HIBP_API_KEY" -H "user-agent: osint-toolkit-research" "$HIBP_API_URL/breachedaccount/account-exists%40hibp-integration-tests.com"
 ```
 
 **Supported sources**
 
-Local breach files and configured third-party APIs for which the analyst has lawful access.
+HIBP breach, paste, stealer-log, domain, and Pwned Passwords endpoints available under the selected plan.
 
 **Pros**
 
-Supports local datasets; CSV output; useful for controlled enrichment pipelines.
+Official documented API; supports privacy-preserving hash-range email searches; domain search requires control verification.
 
 **Limitations**
 
-Data provenance and legality vary; stale breach data can mislead; API sources require separate credentials and terms review.
+Direct email queries disclose the address to HIBP; most email/domain endpoints require subscription and strict acceptable-use compliance; breach presence is exposure evidence, not attribution.
 
 </details>
 

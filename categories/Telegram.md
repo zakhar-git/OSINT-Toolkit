@@ -13,7 +13,7 @@ Telegram client research and public-channel collection.
 - [Scope](#scope)
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
-  - [Telethon](#telethon)
+  - [TDLib](#tdlib)
   - [Telegram Phone Number Checker](#telegram-phone-number-checker)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
@@ -36,45 +36,45 @@ Use this category to generate and test leads, not to declare identity or attribu
 
 The entries below are curated starting points, not endorsements. Verify current upstream documentation and release signatures before installation.
 
-<a id="telethon"></a>
+<a id="tdlib"></a>
 <details>
-<summary><strong>Telethon</strong></summary>
+<summary><strong>TDLib</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | Telethon |
-| **Description** | Python client library for the Telegram API, suitable for authorized, reproducible public-channel collection. |
+| **Name** | TDLib |
+| **Description** | Telegram's cross-platform client library for building controlled collectors and research clients against Telegram data visible to an authenticated account. |
 | **Category** | Telegram |
-| **Platform** | Linux, macOS, Windows; Python |
-| **Repository** | [https://github.com/LonamiWebs/Telethon](https://github.com/LonamiWebs/Telethon) |
-| **Official website** | [https://docs.telethon.dev/](https://docs.telethon.dev/) |
-| **License** | MIT |
+| **Platform** | Linux, macOS, Windows, Android, iOS; C++; JSON interface for other languages |
+| **Repository** | [https://github.com/tdlib/td](https://github.com/tdlib/td) |
+| **Official website** | [https://core.telegram.org/tdlib](https://core.telegram.org/tdlib) |
+| **License** | BSL-1.0 |
 | **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
 
 **Installation**
 
 ```text
-python -m pip install telethon
+# Build TDLib from the official repository or use the official build instructions generator.
 ```
 
 **Quick example**
 
 ```text
-python -m telethon.sync
+# Use the td_json interface to collect a bounded public-channel message range.
 ```
 
 **Supported sources**
 
-Telegram entities and messages accessible to the authenticated account through the official API.
+Telegram chats, channels, users, messages, media references, and updates visible to the authenticated account through Telegram APIs.
 
 **Pros**
 
-Asynchronous API; documented entity model; supports controlled exports.
+Official Telegram library; documented JSON interface; commit activity observed in 2026.
 
 **Limitations**
 
-Requires Telegram API credentials; account access and collection must comply with law and platform terms; private content is out of scope without authorization.
+Requires custom engineering and Telegram credentials; authenticated collection must respect law and platform rules; access visibility is account-dependent.
 
 </details>
 

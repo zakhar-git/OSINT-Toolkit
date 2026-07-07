@@ -1,6 +1,6 @@
 # Documentation style guide
 
-[Previous: Architecture](ARCHITECTURE.md) · [Next: README](../README.md) · [Back to README](../README.md)
+[Previous: Curation policy](CURATION.md) · [Next: README](../README.md) · [Back to README](../README.md)
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ Write concise, neutral, direct English. Prefer “records public DNS answers” 
 
 ## Claims and sources
 
-Use an official repository, official documentation, authoritative registry, original publication, or direct reproducible test. Say what was observed and when. Use `TODO` when a required fact is unknown. Do not silently fill gaps with likely values.
+Use an official repository, official documentation, authoritative registry, original publication, or direct reproducible test. Say what was observed and when. Use `TODO` only for bounded unknowns that do not undermine the recommendation. Do not silently fill gaps with likely values.
 
 Separate these levels:
 
@@ -31,7 +31,7 @@ Separate these levels:
 
 ## Tool descriptions
 
-Lead with the concrete operation and source type. Avoid “best,” “comprehensive,” and “accurate” unless a cited, bounded test supports the term. Limitations must describe actual failure modes: stale data, identity ambiguity, rate limits, access requirements, active traffic, or transformation loss.
+Lead with the concrete operation and source type. Avoid “best,” “comprehensive,” “powerful,” “easy,” “useful,” “great,” and “popular” unless a cited, bounded test supports the term. Limitations must describe actual failure modes: stale data, identity ambiguity, rate limits, access requirements, active traffic, platform breakage, or transformation loss.
 
 ## Examples
 
@@ -61,4 +61,4 @@ Use ordered headings, meaningful alt text, descriptive links, compact tables, an
 
 ---
 
-[Previous: Architecture](ARCHITECTURE.md) · [Next: README](../README.md) · [Back to README](../README.md)
+[Previous: Curation policy](CURATION.md) · [Next: README](../README.md) · [Back to README](../README.md)

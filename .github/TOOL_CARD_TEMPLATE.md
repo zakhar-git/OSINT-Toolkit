@@ -2,7 +2,7 @@
 
 [Previous: Contributing](../CONTRIBUTING.md) · [Next: README](../README.md) · [Back to README](../README.md)
 
-Copy the data fields into `scripts/build_docs.py`; category pages are generated. Replace every placeholder, or use `TODO` when a fact cannot be verified.
+Copy the data fields into `scripts/build_docs.py`; category pages are generated. Replace every placeholder. Use `TODO` only for a bounded unknown that does not undermine the recommendation; if existence, official source, maintenance, or core functionality cannot be verified, do not include the tool.
 
 ## Table of contents
 
@@ -59,12 +59,13 @@ Specific failure modes, access conditions, safety concerns, and inference limits
 
 ## Acceptance checklist
 
-- Official upstream identity and license verified.
-- Status justified by current upstream evidence.
+- Official upstream identity, documentation, and license verified.
+- Status justified by current commits, releases, issues, service updates, or maintainer statements.
 - Installation follows current official documentation.
 - Example uses only synthetic or reserved input.
 - Supported sources do not overstate access.
 - Limitations are specific and actionable.
+- The tool is not archived, deprecated, abandoned, duplicated, or added only for popularity.
 - No duplicate card exists in another category.
 
 ---

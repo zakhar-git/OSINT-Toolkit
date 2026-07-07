@@ -5,7 +5,7 @@
 > [!NOTE]
 > This guide covers lawful collection from public sources. Confirm authorization, platform terms, and local law before collecting or retaining data.
 
-Network attribution context and authorized service discovery.
+IP geolocation, ASN context, routing, and authorized service discovery.
 
 ## Table of contents
 
@@ -14,7 +14,7 @@ Network attribution context and authorized service discovery.
 - [Investigation approach](#investigation-approach)
 - [Tools](#tools)
   - [Nmap](#nmap)
-  - [ZMap](#zmap)
+  - [IPinfo CLI](#ipinfo-cli)
 - [Quality controls](#quality-controls)
 - [Related workflows](#related-workflows)
 <!-- toc:end -->
@@ -79,18 +79,18 @@ Active scanning is observable and may be unlawful without permission; detection 
 
 </details>
 
-<a id="zmap"></a>
+<a id="ipinfo-cli"></a>
 <details>
-<summary><strong>ZMap</strong></summary>
+<summary><strong>IPinfo CLI</strong></summary>
 
 | Field | Value |
 | --- | --- |
-| **Name** | ZMap |
-| **Description** | High-speed internet scanner designed for controlled research with explicit scope and rate governance. |
+| **Name** | IPinfo CLI |
+| **Description** | Official command-line client for IPinfo's IP, ASN, geolocation, hosting, privacy, and bulk enrichment API data. |
 | **Category** | IP |
-| **Platform** | Linux, macOS, BSD |
-| **Repository** | [https://github.com/zmap/zmap](https://github.com/zmap/zmap) |
-| **Official website** | [https://zmap.io/](https://zmap.io/) |
+| **Platform** | Linux, macOS, Windows, BSD, Solaris; Go; Docker |
+| **Repository** | [https://github.com/ipinfo/cli](https://github.com/ipinfo/cli) |
+| **Official website** | [https://ipinfo.io/](https://ipinfo.io/) |
 | **License** | Apache-2.0 |
 | **Status** | Maintained |
 | **Last verified** | 2026-07-07 |
@@ -98,27 +98,26 @@ Active scanning is observable and may be unlawful without permission; detection 
 **Installation**
 
 ```text
-# Debian/Ubuntu
-sudo apt install zmap
+go install github.com/ipinfo/cli/ipinfo@latest
 ```
 
 **Quick example**
 
 ```text
-zmap --dryrun -p 443 192.0.2.0/24
+ipinfo 8.8.8.8
 ```
 
 **Supported sources**
 
-Direct responses to researcher-defined network probes.
+IPinfo API datasets, analyst-supplied IPs, CIDR ranges, ASN lookups, and local IP lists.
 
 **Pros**
 
-Reproducible high-volume methodology; denylist support; structured output.
+Official vendor CLI; supports single and bulk lookup workflows; recent release observed in 2026.
 
 **Limitations**
 
-Internet-scale use has substantial legal, ethical, and operational risk; never run without authorization, exclusions, rate controls, and abuse handling.
+Data depth depends on the API plan and token; geolocation is approximate; IP ownership, hosting, and user attribution are separate questions.
 
 </details>
 

@@ -47,7 +47,7 @@ The entries below are curated starting points, not endorsements. Verify current 
 | **Category** | OPSEC |
 | **Platform** | Linux, macOS, Windows, Android |
 | **Repository** | [https://gitlab.torproject.org/tpo/core/tor](https://gitlab.torproject.org/tpo/core/tor) |
-| **Official website** | [https://www.torproject.org/](https://www.torproject.org/) |
+| **Official website** | [https://support.torproject.org/](https://support.torproject.org/) |
 | **License** | BSD-3-Clause |
 | **Status** | Maintained |
 | **Last verified** | 2026-07-07 |

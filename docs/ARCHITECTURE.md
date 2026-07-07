@@ -1,6 +1,6 @@
 # Repository architecture
 
-[Previous: Roadmap](../ROADMAP.md) · [Next: Style guide](STYLE_GUIDE.md) · [Back to README](../README.md)
+[Previous: Roadmap](../ROADMAP.md) · [Next: Curation policy](CURATION.md) · [Back to README](../README.md)
 
 ## Table of contents
 
@@ -34,7 +34,7 @@ Generated files are committed so GitHub renders a complete repository without a 
 1. **README:** orientation, quick navigation, philosophy, and project status.
 2. **Categories:** safe starting points organized by input artifact or discipline.
 3. **Workflows:** ordered investigative methods, decision gates, preservation, and stop conditions.
-4. **Maintainer documentation:** architecture, conventions, contribution, review, conduct, and security.
+4. **Maintainer documentation:** architecture, curation, conventions, contribution, review, conduct, and security.
 5. **Automation:** deterministic generation and checks for structure, Markdown, TOCs, and links.
 
 ## Change boundaries
@@ -57,4 +57,4 @@ Documentation releases use semantic versions. Major versions may change taxonomy
 
 ---
 
-[Previous: Roadmap](../ROADMAP.md) · [Next: Style guide](STYLE_GUIDE.md) · [Back to README](../README.md)
+[Previous: Roadmap](../ROADMAP.md) · [Next: Curation policy](CURATION.md) · [Back to README](../README.md)

@@ -48,6 +48,7 @@ Most resource collections optimize for volume. This project optimizes for invest
 - Investigation workflows that begin with authority and end with preservation.
 - Category guides organized by the analyst's starting artifact.
 - Explicit status and verification dates for maintenance triage.
+- A curation policy that rejects abandoned, unverifiable, duplicated, or popularity-only entries.
 - Automated Markdown linting, link checking, and table-of-contents validation.
 - Structured issue forms for bugs, features, and tool submissions.
 - Minimal dependencies and fast, plain-Markdown navigation.
@@ -59,6 +60,7 @@ Most resource collections optimize for volume. This project optimizes for invest
 | A known identifier | [Categories](#categories) | You have a username, email, number, image, document, domain, or address. |
 | A research objective | [Workflows](#workflows) | You need a safe, repeatable investigation sequence. |
 | A new tool | [Tool submission](.github/ISSUE_TEMPLATE/tool_submission.yml) | You want to propose a real, verifiable project. |
+| A curation decision | [Curation policy](docs/CURATION.md) | You need to understand why a tool is accepted, rejected, removed, or downgraded. |
 | A documentation change | [Contribution guide](CONTRIBUTING.md) | You are preparing a focused pull request. |
 | A sensitive defect | [Security policy](SECURITY.md) | Reporting publicly could put users or sources at risk. |
 
@@ -69,7 +71,7 @@ OSINT-Toolkit/
 ├── assets/                 # Repository-owned visual assets
 ├── categories/             # Artifact- and discipline-oriented guides
 ├── workflows/              # End-to-end investigation procedures
-├── docs/                   # Architecture, style, and review standards
+├── docs/                   # Architecture, curation, style, and review standards
 ├── scripts/                # Deterministic documentation maintenance
 └── .github/
     ├── ISSUE_TEMPLATE/     # Structured reports and submissions
@@ -77,7 +79,7 @@ OSINT-Toolkit/
     └── PULL_REQUEST_TEMPLATE.md
 ```
 
-Category and workflow pages are generated from reviewed data in [`scripts/build_docs.py`](scripts/build_docs.py). This keeps cards, safety language, and navigation consistent. See the [architecture guide](docs/ARCHITECTURE.md) for ownership and update boundaries.
+Category and workflow pages are generated from reviewed data in [`scripts/build_docs.py`](scripts/build_docs.py). This keeps cards, safety language, and navigation consistent. See the [architecture guide](docs/ARCHITECTURE.md) for ownership and update boundaries, and the [curation policy](docs/CURATION.md) for selection rules.
 
 ## Categories
 
@@ -120,9 +122,9 @@ Every tool uses the same fields: name, description, category, platform, reposito
 
 1. **Method before tool.** A tool result is a lead, not a conclusion.
 2. **Primary sources first.** Prefer official repositories, documentation, registries, and original publications.
-3. **Evidence over volume.** Preserve provenance, time, version, query, and uncertainty.
+3. **Evidence over volume.** A smaller verified catalog is better than a large unreliable catalog.
 4. **Safety by design.** Use the least invasive source that can answer the question.
-5. **Honest maintenance.** Remove or reclassify stale entries; mark unknowns as `TODO`.
+5. **Honest maintenance.** Remove or reclassify stale entries; do not keep abandoned projects for count.
 6. **Reproducibility.** Another qualified analyst should be able to understand and repeat the work.
 
 ## Statistics
@@ -139,7 +141,7 @@ Statistics describe this release and are updated with catalog changes. They are 
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. New tools require an official source, license review, a safe example, concrete limitations, and manual link verification. The review process prioritizes accuracy, legality, maintenance, and category fit.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [curation policy](docs/CURATION.md) before opening an issue or pull request. New tools require an official source, license review, maintenance evidence, a safe example, concrete limitations, and manual link verification. The review process prioritizes accuracy, legality, maintenance, and category fit.
 
 ## Security
 
